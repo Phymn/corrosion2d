@@ -6,10 +6,10 @@ pub struct WindowConfig {
     pub window_title: String,
 }
 
-pub fn main_window(config: WindowConfig, &event_loop: winit::event_loop) {
+pub fn main_window(config: WindowConfig, event_loop: &winit::event_loop::EventLoop<()>) {
     let window = WindowBuilder::new()
         .with_title(config.window_title)
         .with_inner_size(LogicalSize::new(config.resolution_x, config.resolution_y))
-        .build(&event_loop)
+        .build(event_loop)
         .unwrap();
 }

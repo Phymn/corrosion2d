@@ -1,1 +1,2 @@
-pub mod window_config;
+pub mod event_handler;
+pub mod window;
