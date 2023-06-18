@@ -20,8 +20,9 @@ impl Default for C2WindowConfig {
 }
 
 impl C2WindowConfig {
-    pub fn spawn_window(self) -> WindowBuilder {
+    pub fn spawn_window(self, event_loop: ) -> WindowBuilder {
         let window_builder = WindowBuilder::new();
+
 
         window_builder
             .with_decorations(self.decorations)
