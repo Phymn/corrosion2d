@@ -18,15 +18,3 @@ impl Default for C2WindowConfig {
         }
     }
 }
-
-impl C2WindowConfig {
-    pub fn spawn_window(self, event_loop: ) -> WindowBuilder {
-        let window_builder = WindowBuilder::new();
-
-
-        window_builder
-            .with_decorations(self.decorations)
-            .with_title(self.window_title)
-            .with_inner_size(LogicalSize::new(self.height, self.width))
-    }
-}
