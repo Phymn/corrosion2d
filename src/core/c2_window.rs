@@ -2,10 +2,10 @@ use winit::dpi::LogicalSize;
 use winit::window::WindowBuilder;
 
 pub struct C2WindowConfig {
-    pub(crate) width: i32,
-    pub(crate) height: i32,
-    pub(crate) decorations: bool,
-    pub(crate) window_title: String,
+    pub width: i32,
+    pub height: i32,
+    pub decorations: bool,
+    pub window_title: String,
 }
 
 impl Default for C2WindowConfig {
@@ -14,14 +14,14 @@ impl Default for C2WindowConfig {
             width: 1920,
             height: 1080,
             decorations: false,
-            window_title: String::from("A Mourning Light"),
+            window_title: String::from("Corrision 2D"),
         }
     }
 }
 
 impl C2WindowConfig {
-    pub(crate) fn into(self) -> WindowBuilder {
-        let mut window_builder = WindowBuilder::new();
+    pub fn spawn_window(self) -> WindowBuilder {
+        let window_builder = WindowBuilder::new();
 
         window_builder
             .with_decorations(self.decorations)
