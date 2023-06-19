@@ -1,1 +1,1 @@
-pub mod core;
+pub mod c2_resources;

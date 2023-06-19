@@ -1,6 +1,8 @@
 use winit::dpi::LogicalSize;
 use winit::window::WindowBuilder;
 
+use crate::core::c2_event_handler;
+
 pub struct C2WindowConfig {
     pub width: i32,
     pub height: i32,
@@ -14,7 +16,15 @@ impl Default for C2WindowConfig {
             width: 1920,
             height: 1080,
             decorations: false,
-            window_title: String::from("Corrision 2D"),
+            window_title: String::from("Corrosion 2D"),
         }
+    }
+}
+
+impl C2WindowConfig {
+    pub(crate) fn window_builder(
+        self,
+        event_handler: c2_event_handler::C2EventHandler,
+    ) -> WindowBuilder {
     }
 }
