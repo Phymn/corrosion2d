@@ -26,5 +26,12 @@ impl C2WindowConfig {
         self,
         event_handler: c2_event_handler::C2EventHandler,
     ) -> WindowBuilder {
+        let mut builder = WindowBuilder::new();
+
+        builder
+            .with_decoration(self.decorations)
+            .with_title(self.window_title)
+            .with_inner_size(LogicalSize::new(self.width, self.height))
+            .build(&event_handler)
     }
 }
