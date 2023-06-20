@@ -4,10 +4,10 @@ use winit::window::WindowBuilder;
 use crate::core::c2_event_handler;
 
 pub struct C2WindowConfig {
-    pub width: i32,
-    pub height: i32,
-    pub decorations: bool,
-    pub window_title: String,
+    pub(crate) width: i32,
+    pub(crate) height: i32,
+    pub(crate) decorations: bool,
+    pub(crate) window_title: String,
 }
 
 impl Default for C2WindowConfig {
