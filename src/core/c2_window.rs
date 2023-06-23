@@ -29,8 +29,4 @@ impl C2WindowConfig {
             .with_title(self.window_title)
             .with_inner_size(LogicalSize::new(self.width, self.height))
     }
-
-    pub fn redraw(self) {
-        self::WindowBuilder::reque
-    }
 }

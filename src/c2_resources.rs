@@ -1,7 +1,6 @@
 use crate::core::c2_event_handler::event_builder;
 use crate::core::c2_window;
 use winit::event::{Event, WindowEvent};
-use winit::window::WindowBuilder;
 
 pub fn get_window() {
     let event_handler = event_builder();
@@ -12,7 +11,7 @@ pub fn get_window() {
         decorations: true,
     };
     let window_test = window.window_builder();
-    window_test.build(&event_handler).unwrap();
+    let window = window_test.build(&event_handler).unwrap();
 
     event_handler.run(move |event, _, control_flow| {
         // ControlFlow::Poll continuously runs the event loop, even if the OS hasn't
@@ -40,7 +39,8 @@ pub fn get_window() {
                 // You only need to call this if you've determined that you need to redraw, in
                 // applications which do not always need to. Applications that redraw continuously
                 // can just render here instead.o
-                window_test.request_redraw();
+
+                window.request_redraw();
             }
             Event::RedrawRequested(_) => {
                 // Redraw the application.
