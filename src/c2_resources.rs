@@ -2,9 +2,13 @@ use crate::core::c2_event_handler::event_builder;
 use crate::core::c2_window;
 use winit::event::{Event, WindowEvent};
 
+//TODO
+// Refcator most of it.
+// KISS.
+
 pub fn get_window() {
     let event_handler = event_builder();
-    let window = c2_window::C2WindowConfig {
+    let window = c2_window::C2Window {
         width: 1920,
         height: 1080,
         window_title: String::from("A Mourning Light"),

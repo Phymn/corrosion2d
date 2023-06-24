@@ -2,14 +2,14 @@ use winit::dpi::LogicalSize;
 use winit::window::WindowBuilder;
 
 #[derive(Debug)]
-pub struct C2WindowConfig {
+pub struct C2Window {
     pub(crate) width: i32,
     pub(crate) height: i32,
     pub(crate) decorations: bool,
     pub(crate) window_title: String,
 }
 
-impl Default for C2WindowConfig {
+impl Default for C2Window {
     fn default() -> Self {
         Self {
             width: 1920,
@@ -20,7 +20,7 @@ impl Default for C2WindowConfig {
     }
 }
 
-impl C2WindowConfig {
+impl C2Window {
     pub(crate) fn window_builder(self) -> WindowBuilder {
         let builder = WindowBuilder::new();
 
