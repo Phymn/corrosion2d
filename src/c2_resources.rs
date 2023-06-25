@@ -8,13 +8,13 @@ use winit::event::{Event, WindowEvent};
 
 pub fn get_window() {
     let event_handler = event_builder();
-    let window = c2_window::C2Window {
+    let window = c2_window::C2WindowConfig {
         width: 1920,
         height: 1080,
         window_title: String::from("A Mourning Light"),
         decorations: true,
     };
-    let window_test = window.window_builder();
+    let window_test = c2_window::C2Window.
     let window = window_test.build(&event_handler).unwrap();
 
     event_handler.run(move |event, _, control_flow| {
