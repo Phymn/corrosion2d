@@ -1,5 +1,6 @@
 use winit::dpi::LogicalSize;
-use winit::window::WindowBuilder;
+use winit::event_loop::EventLoop;
+use winit::window::{Window, WindowBuilder};
 
 #[derive(Debug)]
 pub struct C2Window {
@@ -28,5 +29,10 @@ impl C2Window {
             .with_decorations(self.decorations)
             .with_title(self.window_title)
             .with_inner_size(LogicalSize::new(self.width, self.height))
+    }
+
+    pub(crate) fn window_spawn(self, window_builder: WindowBuilder) -> Window {
+        //todo
+        window_builder.build(EventLoop::new())
     }
 }
