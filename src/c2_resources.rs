@@ -1,5 +1,6 @@
 use crate::core::c2_event_handler::event_builder;
 use crate::core::c2_window;
+use crate::core::c2_window::C2WindowConfig;
 use winit::event::{Event, WindowEvent};
 
 //TODO
@@ -14,7 +15,8 @@ pub fn get_window() {
         window_title: String::from("A Mourning Light"),
         decorations: true,
     };
-    let window_test = c2_window::C2Window.
+
+    let window_test = c2_window::C2WindowConfig::window_builder(window);
     let window = window_test.build(&event_handler).unwrap();
 
     event_handler.run(move |event, _, control_flow| {
