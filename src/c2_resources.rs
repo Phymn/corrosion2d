@@ -3,7 +3,7 @@ use crate::core::c2_window::C2WindowConfig;
 use winit::event::{Event, WindowEvent};
 
 //TODO
-// Refcator most of it.
+// Refactor most of it.
 // KISS.
 
 pub fn get_window() {
