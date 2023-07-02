@@ -9,13 +9,6 @@ pub struct Resolution {
     pub height: i32,
 }
 
-pub struct C2DWindowConfig {
-    /// Contains data needed to spawn a window with specified settings.
-    pub resolution: Resolution,
-    pub window_title: String,
-    pub window_decorations: bool,
-}
-
 impl Resolution {
     /// Returns default resolution of 1920x1080
     pub fn default() -> Self {
@@ -28,6 +21,12 @@ impl Resolution {
     pub fn new(width: i32, height: i32) -> Self {
         Resolution { width, height }
     }
+}
+pub struct C2DWindowConfig {
+    /// Contains data needed to spawn a window with specified settings.
+    pub resolution: Resolution,
+    pub window_title: String,
+    pub window_decorations: bool,
 }
 
 impl C2DWindowConfig {
