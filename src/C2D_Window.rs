@@ -4,6 +4,7 @@ use winit::event_loop::EventLoop;
 use winit::window::{Window, WindowBuilder};
 
 pub struct Resolution {
+    /// Game window resolution.
     pub width: i32,
     pub height: i32,
 }
