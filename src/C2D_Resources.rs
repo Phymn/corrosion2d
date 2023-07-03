@@ -1,60 +1,55 @@
-use crate::core::c2_event_handler::event_builder;
-use crate::core::c2_window::C2WindowConfig;
+use winit::dpi::LogicalSize;
 use winit::event::{Event, WindowEvent};
+use winit::event_loop::EventLoop;
+use winit::window::{Window, WindowBuilder};
 
-//TODO
-// Refactor most of it.
-// KISS.
+pub mod c2d_window {
+    pub struct Resolution {
+        /// Game window resolution.
+        pub width: i32,
+        pub height: i32,
+    }
 
-pub fn get_window() {
-    let event_handler = event_builder();
-    let window = C2WindowConfig {
-        width: 1920,
-        height: 1080,
-        window_title: String::from("A Mourning Light"),
-        decorations: true,
-    };
-
-    let window_test = C2WindowConfig::window_builder(window);
-    let window = window_test.build(&event_handler).unwrap();
-
-    event_handler.run(move |event, _, control_flow| {
-        // ControlFlow::Poll continuously runs the event loop, even if the OS hasn't
-        // dispatched any events. This is ideal for games and similar applications.
-        control_flow.set_poll();
-
-        // ControlFlow::Wait pauses the event loop if no events are available to process.
-        // This is ideal for non-game applications that only update in response to user
-        // input, and uses significantly less power/CPU time than ControlFlow::Poll.
-        control_flow.set_wait();
-
-        match event {
-            Event::WindowEvent {
-                event: WindowEvent::CloseRequested,
-                ..
-            } => {
-                println!("The close button was pressed; stopping");
-                control_flow.set_exit();
+    impl Resolution {
+        /// Returns default resolution of 1920x1080
+        pub fn default() -> Self {
+            Resolution {
+                width: 1920,
+                height: 1080,
             }
-            Event::MainEventsCleared => {
-                // Application update code.
-
-                // Queue a RedrawRequested event.
-                //
-                // You only need to call this if you've determined that you need to redraw, in
-                // applications which do not always need to. Applications that redraw continuously
-                // can just render here instead.o
-
-                window.request_redraw();
-            }
-            Event::RedrawRequested(_) => {
-                // Redraw the application.
-                //
-                // It's preferable for applications that do not render continuously to render in
-                // this event rather than in MainEventsCleared, since rendering in here allows
-                // the program to gracefully handle redraws requested by the OS.
-            }
-            _ => (),
         }
-    });
+        /// Returns a new resolution
+        pub fn new(width: i32, height: i32) -> Self {
+            Resolution { width, height }
+        }
+    }
+    pub struct C2DWindowConfig {
+        /// Contains data needed to spawn a window with specified settings.
+        pub resolution: Resolution,
+        pub window_title: String,
+        pub window_decorations: bool,
+    }
+
+    impl C2DWindowConfig {
+        /// Returns default settings for the window.
+        /// Resolution defaults to 1920, 1080.
+        /// Window title defaults to Corrosion 2D.
+        /// Window decorations is true.
+        pub fn default() -> Self {
+            C2DWindowConfig {
+                resolution: Resolution::default(),
+                window_title: String::from("Corrosion 2D"),
+                window_decorations: true,
+            }
+        }
+
+        pub fn new(resolution: Resolution, window_title: String, window_decorations: bool) -> Self {
+            /// Returns a window config with specified values.
+            C2DWindowConfig {
+                resolution,
+                window_title,
+                window_decorations,
+            }
+        }
+    }
 }
