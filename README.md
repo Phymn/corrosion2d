@@ -1,5 +1,9 @@
 ### Corrosion2D Engine
 
+---
+### Project current on hold until further notice.
+---
+
 #### Summary
 The game engine used in A Mourning Light. \
 \
